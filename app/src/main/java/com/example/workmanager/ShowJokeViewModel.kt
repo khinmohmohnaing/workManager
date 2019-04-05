@@ -14,7 +14,7 @@ class ShowJokeViewModel : ViewModel(){
     fun showJoke(){
     val periodicWork =
         OneTimeWorkRequest.Builder(ShowJokeWorker::class.java)
-            .setInitialDelay(1, TimeUnit.MINUTES)
+            .setInitialDelay(5, TimeUnit.SECONDS)
             .addTag(Constants.TAG_OUTPUT)
             .build()
     WorkManager.getInstance().enqueue(periodicWork)
