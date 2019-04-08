@@ -13,7 +13,7 @@ class ShowJokeWorker constructor(val context: Context, parameters: WorkerParamet
         Log.i("mvm","do work")
         val api = GetRetrofit.getRetrofit().
             create(mJokeApiInterface::class.java)
-        Log.i("mvm", api.getJokeInfo().execute().body()!!.type)
+        Log.i("mvm", api.getJokeInfo().execute().body()!!.type+api.getJokeInfo().execute().body()!!.setup)
         val output =Data.Builder()
             .putString(Constants.TYPE, api.getJokeInfo().execute().body()!!.type)
             .putString(Constants.SETUP, api.getJokeInfo().execute().body()!!.setup)
