@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.work.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         })
         btnShowJoke.setOnClickListener {
             mViewModel.showJoke()
+            Toast.makeText(this,"wait 30 seconds ",Toast.LENGTH_LONG).show()
             btnShowJoke.visibility = View.GONE
         }
     }
