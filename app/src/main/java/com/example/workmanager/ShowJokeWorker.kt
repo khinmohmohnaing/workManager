@@ -8,13 +8,11 @@ import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 class ShowJokeWorker constructor(val context: Context, parameters: WorkerParameters): Worker(context,parameters){
-
     override fun doWork(): Result {
-        //val jokeInfo = WorkUtils.showJoke()
+        startWorkers()
         Log.i("mvm","do work")
         val api = GetRetrofit.getRetrofit().
             create(mJokeApiInterface::class.java)
-        startWorkers()
         Log.i("mvm", api.getJokeInfo().execute().body()!!.type)
         val output =Data.Builder()
             .putString(Constants.TYPE, api.getJokeInfo().execute().body()!!.type)
@@ -24,12 +22,12 @@ class ShowJokeWorker constructor(val context: Context, parameters: WorkerParamet
         return  Result.success(output)
     }
     private fun startWorkers() {
-        val periodicWork =
+        val requestJokeInfo =
             OneTimeWorkRequest.Builder(ShowJokeWorker::class.java)
-                .setInitialDelay(10, TimeUnit.SECONDS)
+                .setInitialDelay(30, TimeUnit.SECONDS)
                 .addTag(Constants.TAG_OUTPUT)
                 .build()
-        WorkManager.getInstance().enqueue(periodicWork)
+        WorkManager.getInstance().enqueue(requestJokeInfo)
     }
 
 }

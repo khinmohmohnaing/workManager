@@ -12,12 +12,11 @@ class ShowJokeViewModel : ViewModel(){
     var mWorkManager: WorkManager = WorkManager.getInstance()
     var mSavedWorkInfo: LiveData<List<WorkInfo>> = mWorkManager.getWorkInfosByTagLiveData(Constants.TAG_OUTPUT)
     fun showJoke(){
-    val periodicWork =
+    val requestJokeInfo =
         OneTimeWorkRequest.Builder(ShowJokeWorker::class.java)
-            .setInitialDelay(5, TimeUnit.SECONDS)
             .addTag(Constants.TAG_OUTPUT)
             .build()
-    WorkManager.getInstance().enqueue(periodicWork)
+    WorkManager.getInstance().enqueue(requestJokeInfo)
 }
     internal fun getOutputWorkInfo(): LiveData<List<WorkInfo>> {
         return mSavedWorkInfo

@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val mViewModel = ViewModelProviders.of(this).get(ShowJokeViewModel::class.java)
-        mViewModel.showJoke()
         mViewModel.getOutputWorkInfo().observe(this, Observer {
             if (it == null || it.isEmpty()) {
                 return@Observer
