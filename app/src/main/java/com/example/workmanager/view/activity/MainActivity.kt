@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        requestTime=0
         val mViewModel = ViewModelProviders.of(this).get(ShowJokeViewModel::class.java)
         mViewModel.getOutputWorkInfo().observe(this, Observer {
             if (it == null || it.isEmpty()) {
