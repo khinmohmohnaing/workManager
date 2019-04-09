@@ -1,10 +1,11 @@
-package com.example.workmanager
+package com.example.workmanager.worker
 
 import android.content.Context
 import android.util.Log
 import androidx.work.*
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import com.example.workmanager.Constants
+import com.example.workmanager.api.GetRetrofit
+import com.example.workmanager.api.mJokeApiInterface
 import java.util.concurrent.TimeUnit
 
 class ShowJokeWorker constructor(val context: Context, parameters: WorkerParameters) : Worker(context, parameters) {

@@ -1,14 +1,12 @@
-package com.example.workmanager
+package com.example.workmanager.viewModel
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel
-import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.NetworkType
-import javax.xml.datatype.DatatypeConstants.MINUTES
 import androidx.work.PeriodicWorkRequest
+import com.example.workmanager.Constants
+import com.example.workmanager.worker.WaitJokeApiWorker
 import java.util.concurrent.TimeUnit
 
 

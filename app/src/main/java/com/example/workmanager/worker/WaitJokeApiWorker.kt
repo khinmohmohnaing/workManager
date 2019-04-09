@@ -1,10 +1,12 @@
-package com.example.workmanager
+package com.example.workmanager.worker
 
 import android.content.Context
 import android.util.Log
 import androidx.work.Data
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import com.example.workmanager.Constants
+import com.example.workmanager.view.activity.MainActivity
 
 class WaitJokeApiWorker constructor(val context: Context, parameters: WorkerParameters) : Worker(context, parameters) {
     override fun doWork(): Result {

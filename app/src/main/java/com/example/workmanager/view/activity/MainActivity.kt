@@ -1,17 +1,18 @@
-package com.example.workmanager
+package com.example.workmanager.view.activity
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.work.*
+import com.example.workmanager.Constants
+import com.example.workmanager.R
+import com.example.workmanager.viewModel.ShowJokeViewModel
+import com.example.workmanager.viewModel.WaitJokeApiViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     companion object {

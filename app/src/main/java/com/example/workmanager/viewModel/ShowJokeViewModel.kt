@@ -1,12 +1,12 @@
-package com.example.workmanager
+package com.example.workmanager.viewModel
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel
-import android.net.Uri
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
-import java.util.concurrent.TimeUnit
+import com.example.workmanager.Constants
+import com.example.workmanager.worker.ShowJokeWorker
 
 class ShowJokeViewModel : ViewModel(){
     var mWorkManager: WorkManager = WorkManager.getInstance()

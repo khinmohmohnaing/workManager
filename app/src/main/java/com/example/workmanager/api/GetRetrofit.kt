@@ -1,4 +1,4 @@
-package com.example.workmanager
+package com.example.workmanager.api
 
 import com.github.leonardoxh.livedatacalladapter.LiveDataCallAdapterFactory
 import com.github.leonardoxh.livedatacalladapter.LiveDataResponseBodyConverterFactory
