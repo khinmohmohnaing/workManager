@@ -33,11 +33,11 @@ class MainActivity : AppCompatActivity() {
                 val punchline = outputData.getString(Constants.PUNCHLINE)
                 Log.i("FinishTime", type + setup + punchline)
                 if (type != null && setup != null && punchline != null) {
-                        messageLyaout.visibility=View.GONE
-                        layoutShowJoke.visibility = View.VISIBLE
-                        txtType.text = type.toString()
-                        txtSetup.text = setup.toString()
-                        txtPunchline.text = punchline.toString()
+                    messageLyaout.visibility=View.GONE
+                    layoutShowJoke.visibility = View.VISIBLE
+                    txtType.text = type.toString()
+                    txtSetup.text = setup.toString()
+                    txtPunchline.text = punchline.toString()
 
                 } else {
                     layoutShowJoke.visibility = View.GONE
