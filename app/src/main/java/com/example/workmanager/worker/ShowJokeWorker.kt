@@ -25,7 +25,7 @@ class ShowJokeWorker constructor(val context: Context, parameters: WorkerParamet
     private fun startWorkers() {
         val requestJokeInfo =
             OneTimeWorkRequest.Builder(ShowJokeWorker::class.java)
-                .setInitialDelay(10, TimeUnit.SECONDS)
+                .setInitialDelay(15, TimeUnit.SECONDS)
                 .addTag(Constants.TAG_OUTPUT)
                 .build()
         WorkManager.getInstance().enqueue(requestJokeInfo)

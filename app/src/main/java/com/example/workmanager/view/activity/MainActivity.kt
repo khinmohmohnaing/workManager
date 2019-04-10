@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         })
         btnShowJoke.setOnClickListener {
             mViewModel.showJoke()
-            Toast.makeText(this, "wait 30 seconds ", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "wait 15 seconds ", Toast.LENGTH_LONG).show()
             btnShowJoke.visibility = View.GONE
         }
     }
