@@ -9,6 +9,7 @@
 
     <Button
             android:id="@+id/btnShowJoke"
+            android:enabled="true"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Show Joke"
@@ -57,7 +58,7 @@
                     android:background="@drawable/ha"
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    />
+            />
             <TextView
                     android:id="@+id/txtSetup"
                     android:layout_width="wrap_content"
@@ -68,25 +69,43 @@
                     android:layout_marginLeft="10dp"/>
         </LinearLayout>
 
-       <LinearLayout
-               android:layout_below="@+id/setuplayout"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content">
-           <ImageView
-                   android:background="@drawable/haha"
-                   android:layout_width="70dp"
-                   android:layout_height="50dp"
-                   android:layout_centerInParent="true"/>
-           <TextView
-                   android:id="@+id/txtPunchline"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:textColor="#FCF7F7"
-                   android:layout_marginTop="10dp"
-                   android:textSize="25dp"
-                   android:layout_marginLeft="10dp"/>
-       </LinearLayout>
+        <LinearLayout
+                android:layout_below="@+id/setuplayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <ImageView
+                    android:background="@drawable/haha"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"/>
+            <TextView
+                    android:id="@+id/txtPunchline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FCF7F7"
+                    android:layout_marginTop="10dp"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="10dp"/>
+        </LinearLayout>
 
     </RelativeLayout>
+    <LinearLayout
+            android:id="@+id/messageLyaout"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wait 15 minutes"
+                android:gravity="center"
+                android:textStyle="italic"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:layout_centerInParent="true"
+        />
+
+    </LinearLayout>
 
 </RelativeLayout>

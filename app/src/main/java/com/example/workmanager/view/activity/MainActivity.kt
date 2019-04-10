@@ -11,18 +11,13 @@ import androidx.work.*
 import com.example.workmanager.Constants
 import com.example.workmanager.R
 import com.example.workmanager.viewModel.ShowJokeViewModel
-import com.example.workmanager.viewModel.WaitJokeApiViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        var requestTime = 0
-    }
-
+    var isShowToast = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        requestTime=0
         val mViewModel = ViewModelProviders.of(this).get(ShowJokeViewModel::class.java)
         mViewModel.getOutputWorkInfo().observe(this, Observer {
             if (it == null || it.isEmpty()) {
@@ -36,39 +31,17 @@ class MainActivity : AppCompatActivity() {
                 val type = outputData.getString(Constants.TYPE)
                 val setup = outputData.getString(Constants.SETUP)
                 val punchline = outputData.getString(Constants.PUNCHLINE)
-                btnShowJoke.visibility = View.GONE
-                layoutShowJoke.visibility = View.VISIBLE
                 Log.i("FinishTime", type + setup + punchline)
-                if (type != null) {
-                    txtType.text = type.toString()
-                    txtSetup.text = setup.toString()
-                    txtPunchline.text = punchline.toString()
+                if (type != null && setup != null && punchline != null) {
+                        messageLyaout.visibility=View.GONE
+                        layoutShowJoke.visibility = View.VISIBLE
+                        txtType.text = type.toString()
+                        txtSetup.text = setup.toString()
+                        txtPunchline.text = punchline.toString()
+
                 } else {
-                    WorkManager.getInstance().cancelAllWorkByTag(Constants.TAG_OUTPUT)
-                    Toast.makeText(this, "wait 15 minute ", Toast.LENGTH_LONG).show()
-                    btnShowJoke.visibility = View.VISIBLE
                     layoutShowJoke.visibility = View.GONE
-                    btnShowJoke.isEnabled = false
-                    val mWaitJokeApiViewModel = ViewModelProviders.of(this).get(WaitJokeApiViewModel::class.java)
-                    mWaitJokeApiViewModel.waitJokeApi()
-                    mWaitJokeApiViewModel.getOutPut().observe(this, Observer {
-                        if (it == null || it.isEmpty()) {
-                            return@Observer
-                        }
-                        val workInfo = it.get(0)
-                        val finished = workInfo.getState().isFinished()
-                        if (!finished) {
-                            if (requestTime != 1) {
-                                Log.i("Finish", "not finish")
-                                val outputData = workInfo.getOutputData()
-                                val isFinish = outputData.getBoolean(Constants.FINISHTIME, false)
-                                WorkManager.getInstance().cancelAllWorkByTag(Constants.TAG_OUTPUT_FOR_WAITJOKEAPI)
-                                btnShowJoke.isEnabled = true
-                            }
-                        } else {
-                            Log.i("Finish", "finish")
-                        }
-                    })
+                    messageLyaout.visibility=View.VISIBLE
                 }
             }
         })
